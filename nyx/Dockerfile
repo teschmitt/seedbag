@@ -1,6 +1,13 @@
 FROM golang:1.18-buster AS build-env
 
-RUN cd /root && git clone https://github.com/rls-moe/nyx
+# until this gets merged:
+# https://github.com/rls-moe/nyx/pull/13
+# this must stay commented:
+# RUN cd /root && git clone https://github.com/rls-moe/nyx
+# and we'll be pulling the modified version from a fork:
+RUN cd /root && \
+  git clone https://github.com/teschmitt/nyx.git
+
 WORKDIR /root/nyx
 
 RUN go build -o $GOPATH/bin/nyx
