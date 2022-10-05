@@ -1,13 +1,15 @@
 services:
   frontend:
-    build: frontend
+    # build: frontend
+    image: teschmitt/seedbag-frontend:latest
     restart: always
     ports:
       - "8000:80"
     depends_on:
       - etherpad
   nyx:
-    build: nyx
+    # build: nyx
+    image: teschmitt/seedbag-nyx:latest
     container_name: nyx
     restart: always
     ports:
@@ -15,10 +17,11 @@ services:
     volumes:
       - ./nyx/data:/data
   hedgedoc:
-    build:
-      context: hedgedoc
-      args:
-        VERSION: 1.9.3
+    # build:
+    #   context: hedgedoc
+    #   args:
+    #     VERSION: 1.9.3
+    image: teschmitt/seedbag-hedgedoc:latest
     container_name: hedgedoc
     restart: always
     ports:
@@ -42,20 +45,23 @@ services:
       - ./etherpad/data/settings.json:/opt/etherpad/settings.json
       #- ./data/node_modules:/opt/etherpad/node_modules
       - ./etherpad/data/var:/opt/etherpad/var
-    build:
-      context: etherpad
-      args:
-        ETHERPAD_VER: 1.8.18
+    # build:
+    #   context: etherpad
+    #   args:
+    #     ETHERPAD_VER: 1.8.18
+    image: teschmitt/seedbag-etherpad:latest
     ports:
       - "9001:9001"
   chat:
-    build: chat
+    # build: chat
+    image: teschmitt/seedbag-chat:latest
     container_name: chat
     restart: always
     ports:
       - "9004:9004"
   wssh:
-    build: wssh
+    # build: wssh
+    image: teschmitt/seedbag-wssh:latest
     container_name: wssh
     restart: always
     ports:
