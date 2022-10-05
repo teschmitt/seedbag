@@ -8,7 +8,7 @@
 
 FROM node:18-alpine3.14
 
-ARG ETHERPAD_VER=
+ARG ETHERPAD_VER=1.8.18
 
 ENV DEL_PKGS="openssl" RM_DIRS="/usr/src/* /var/cache/apk/*" PAD_BUILD_DEPENDENCY="openssl openssl-dev pcre pcre-dev zlib zlib-dev"
 
